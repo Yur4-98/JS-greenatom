@@ -5,9 +5,9 @@ import { v4 as uuid } from "uuid";
 function TodoForm({ todos, setTodos }) {
   const [todo, setTodo] = useState({
     id: "",
-    userid: "",
-    //date: "",
-    //endDate: "",
+    //userid: "",
+    date: "",
+    endDate: "",
     //time: "",
     task: "",
     completed: false
@@ -21,8 +21,11 @@ function TodoForm({ todos, setTodos }) {
     setTodo({ ...todo, task: e.target.value });
   }
 
-  function handleTaskInputChangeuser(e) {
-    setTodo({ ...todo, userid: e.target.value });
+  function handleTaskInputChangedate1(e) {
+    setTodo({ ...todo, date: e.target.value });
+  }
+  function handleTaskInputChangedate2(e) {
+    setTodo({ ...todo, endDate: e.target.value });
   }
 
   function handleSubmit(e) {
@@ -38,6 +41,7 @@ function TodoForm({ todos, setTodos }) {
         <TextField
           label="Опишите задачу, укажите требуемые время и дату"
           type="text"
+          fullWidth="true"
           name="task"
           value={todo.task}
           onChange={handleTaskInputChangetask}
@@ -45,11 +49,29 @@ function TodoForm({ todos, setTodos }) {
       </div>
       <div>
         <TextField
-          label="Имя пользователя"
-          type="text"
+          label="Дата начала"
+          InputLabelProps={{
+            shrink: true
+          }}
+          type="date"
+          fullWidth="true"
           name="task"
           value={todo.userid}
-          onChange={handleTaskInputChangeuser}
+          onChange={handleTaskInputChangedate1}
+        />
+      </div>
+      <div>
+        <TextField
+          label="Дата конца"
+          InputLabelProps={{
+            shrink: true
+          }}
+          type="date"
+          fullWidth="true"
+          preventDefault="none"
+          name="task"
+          value={todo.userid}
+          onChange={handleTaskInputChangedate2}
         />
       </div>
     </form>

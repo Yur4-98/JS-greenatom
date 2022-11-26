@@ -40,6 +40,7 @@ function App() {
 
   return (
     <>
+      <TodoList todos={todos} setTodos={setTodos} />
       <NavigationBar todos={todos} setTodos={setTodos} />
       <RouterProvider router={router} />
     </>
